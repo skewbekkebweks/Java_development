@@ -5,6 +5,7 @@ import java.util.Arrays;
 public class Main {
     private int count = 0;
     public static void main(String[] args) {
+        System.out.println((int) (Math.random() * 5));
         String s2 = new String("A");
         String s1 = new String("A");
         int[] a = new int[5];
