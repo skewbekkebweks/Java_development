@@ -1,31 +1,25 @@
 package com.example.java_development;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
-    private int count = 0;
     public static void main(String[] args) {
-        System.out.println((int) (Math.random() * 5));
-        String s2 = new String("A");
-        String s1 = new String("A");
-        int[] a = new int[5];
-
-        System.out.println(Arrays.toString(a));
-        System.out.println(s1.charAt(0));
-        System.out.println(s1.equals(s2));
-        s1 += "B";
-        System.out.println(s1);
-    }
-    public int getCount() {
-        return this.count;
-    }
-    public void registration(String name) {
-
-    }
-    public static void print(Integer i) {
-        System.out.println(i);
-    }
-    public static void print(Long i) {
-        System.out.println(i);
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt(), b = sc.nextInt();
+        double b1 = (double) b;
+        String div = a != 0 ? String.format("%.1f", -b1 / a) : "0";
+        if (a > 0 && b >= 0) {
+            System.out.println("any x");
+        } else if (a > 0 && b < 0) {
+            System.out.println("x<-" + div + " or x>" + div);
+        } else if (a == 0 && b > 0) {
+            System.out.println("any x");
+        } else if (a == 0 && b <= 0) {
+            System.out.println("no such x");
+        } else if (a < 0 && b > 0) {
+            System.out.println("-" + div + "<x<" + div);
+        } else if (a < 0 && b <= 0) {
+            System.out.println("no such x");
+        }
     }
 }
