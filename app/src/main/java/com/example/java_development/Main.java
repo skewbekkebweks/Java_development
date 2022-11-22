@@ -6,20 +6,16 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt(), b = sc.nextInt();
-        double b1 = (double) b;
-        String div = a != 0 ? String.format("%.1f", -b1 / a) : "0";
-        if (a > 0 && b >= 0) {
-            System.out.println("any x");
-        } else if (a > 0 && b < 0) {
-            System.out.println("x<-" + div + " or x>" + div);
-        } else if (a == 0 && b > 0) {
-            System.out.println("any x");
-        } else if (a == 0 && b <= 0) {
-            System.out.println("no such x");
-        } else if (a < 0 && b > 0) {
-            System.out.println("-" + div + "<x<" + div);
-        } else if (a < 0 && b <= 0) {
-            System.out.println("no such x");
+        int[] c = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        if (b > c[a - 1] || a > 12 || a < 1 || b < 1) {
+            System.out.println(-1);
+            return;
         }
+        int left = 365;
+        left -= b;
+        for (int i = 0; i < a - 1; i++) {
+            left -= c[i];
+        }
+        System.out.println(left);
     }
 }
