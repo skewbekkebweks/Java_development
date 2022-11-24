@@ -15,6 +15,11 @@ public class Wizard extends Unit {
     }
 
     @Override
+    public void move() {
+        System.out.println("Идёт волшебник");
+    }
+
+    @Override
     public void printInfo() {
         super.printInfo();
         System.out.println("MANA = " + this.mana);

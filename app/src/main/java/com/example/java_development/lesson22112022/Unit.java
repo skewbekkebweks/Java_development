@@ -1,6 +1,6 @@
 package com.example.java_development.lesson22112022;
 
-public class Unit {
+public abstract class Unit implements Speakable {
     protected int hp;
     protected String name;
     protected String ip;
@@ -11,10 +11,17 @@ public class Unit {
         this.ip = ip;
     }
 
+    public abstract void move();
+
     public void printInfo() {
         System.out.println("NAME = " + this.name);
         System.out.println("IP = " + this.ip);
         System.out.println("HP = " + this.hp);
+    }
+
+    @Override
+    public void speak() {
+        System.out.println("Меня зовут " + this.name);
     }
 
     public void attack(Unit unit) {

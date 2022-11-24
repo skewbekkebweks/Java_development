@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        this.button = findViewById(R.id.button);
+        this.button = findViewById(R.id.go);
         button.setBackgroundColor(getResources().getColor(R.color.purple_700));
     }
 

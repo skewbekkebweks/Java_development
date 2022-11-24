@@ -9,6 +9,11 @@ public class Robot extends Unit {
     }
 
     @Override
+    public void move() {
+        System.out.println("Идёт робот");
+    }
+
+    @Override
     public void printInfo() {
         super.printInfo();
         System.out.println("ARMOR = " + this.armor);
