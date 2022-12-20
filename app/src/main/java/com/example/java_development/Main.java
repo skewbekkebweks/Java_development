@@ -4,20 +4,29 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Integer iOb1 = 100;
-        Integer iOb2 = 100;
-        System.out.println(iOb1 == iOb2);
-
-        Integer iOb3 = new Integer(120);
-        Integer iOb4 = new Integer(120);
-        System.out.println(iOb3 == iOb4);
-
-        Integer iOb5 = 200;
-        Integer iOb6 = 200;
-        System.out.println(iOb5 == iOb6);
-
-        Integer iOb7 = 200;
-        Integer iOb8 = 200;
-        System.out.println(iOb7.equals(iOb8));
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите, пожалуйста, первую дробь");
+        int An = sc.nextInt();
+        int Ad = sc.nextInt();
+        System.out.println("Введите, пожалуйста, вторую дробь");
+        int Bn = sc.nextInt();
+        int Bd = sc.nextInt();
+        int Cn = An + 3 * Bn;
+        int Cd = Bn;
+        int Dn = 3 * Bn - Bd;
+        int Dd = 3 * Bd;
+        int En = Cn * Dd;
+        int Ed = Cd * Dn;
+        System.out.println("Результат:");
+        System.out.println(1.0 * En / Ed);
+        if (En / Ed == 0) {
+            System.out.println(En);
+            System.out.println("---");
+            System.out.println(Ed);
+        } else {
+            System.out.println("   " + En % Ed);
+            System.out.println(En / Ed + "-----");
+            System.out.println("   " + Ed);
+        }
     }
 }
