@@ -1,6 +1,6 @@
 package com.example.java_development.lesson22112022;
 
-public interface Speakable {
+public interface Speakable extends Moveable {
     public static final int LENGTH_SHORT = 0;
     public static final int LENGTH_LONG = 1;
     public default void example() {
