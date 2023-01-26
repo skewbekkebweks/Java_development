@@ -17,6 +17,7 @@ public class SmileThread extends Thread {
     private Context context;
     private int x = 100, y = 100;
     private int dX = 10, dY = 10;
+    private int time = 10;
     private int eventX = x, eventY = y;
     private Paint p = new Paint();
 
@@ -33,12 +34,14 @@ public class SmileThread extends Thread {
     @Override
     public void run() {
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.smile);
+        int bw = bitmap.getWidth() / 2;
+        int bh = bitmap.getHeight() / 2;
 
         while (!stop) {
             Canvas canvas = holder.lockCanvas();
             if (canvas != null) {
                 canvas.drawColor(Color.BLUE);
-                canvas.drawBitmap(bitmap, x - bitmap.getWidth() / 2, y - bitmap.getHeight() / 2, p);
+                canvas.drawBitmap(bitmap, x - bw, y - bh, p);
 
                 if (eventX > x) x += dX;
                 if (eventX < x) x -= dX;
@@ -68,6 +71,7 @@ public class SmileThread extends Thread {
 
     public void setEventX(int eventX) {
         this.eventX = eventX;
+        dX = Math.abs((eventX - x) / time);
     }
 
     public int getEventY() {
@@ -76,5 +80,6 @@ public class SmileThread extends Thread {
 
     public void setEventY(int eventY) {
         this.eventY = eventY;
+        dY = Math.abs((eventY - y) / time);
     }
 }
