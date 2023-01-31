@@ -24,7 +24,7 @@ public class DrawActivity extends AppCompatActivity {
         Bitmap b = BitmapFactory.decodeResource(getResources(), R.drawable.player);
         Rect init = new Rect(0, 0, b.getWidth() / 5, b.getHeight() / 3);
 
-        Sprite player = new Sprite(100, 300, 0, 20, init, b);
+        Sprite player = new Sprite(100, 300, 0, 20, init, b, 3, 5);
         setContentView(gv = new GameView(this, player));
         Timer timer = new Timer();
         timer.start();

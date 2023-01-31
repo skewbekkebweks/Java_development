@@ -27,7 +27,7 @@ public class Sprite {
 
     private Canvas canvas;
 
-    public Sprite(double x, double y, double velocityX, double velocityY, Rect initialFrame, Bitmap bitmap) {
+    public Sprite(double x, double y, double velocityX, double velocityY, Rect initialFrame, Bitmap bitmap, int sheetHeight, int sheetWidth) {
 
         this.x = x;
         this.y = y;
@@ -39,8 +39,8 @@ public class Sprite {
         this.frameWidth = initialFrame.width();
         this.frameHeight = initialFrame.height();
 
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 5; j++) {
+        for (int i = 0; i < sheetHeight; i++) {
+            for (int j = 0; j < sheetWidth; j++) {
                 Rect r = new Rect(j * frameWidth, i * frameHeight,
                         (j + 1) * frameWidth, (i + 1) * frameWidth);
                 frames.add(r);
@@ -66,16 +66,26 @@ public class Sprite {
                 velocityY *= -1;
             }
             if (x < -frameWidth) {
-                teleport();
+                teleport(-1, -1);
             }
         }
         currentFrame++;
         currentFrame %= frames.size();
     }
 
+    public void teleport(int x, int y) {
+        if (canvas != null) {
+            if (x == -1) this.x = canvas.getWidth();
+            if (y == -1) this.y = (canvas.getHeight() - frameHeight) * Math.random();
+        }
+    }
+
     public void teleport() {
-        x = canvas.getWidth();
-        y = (canvas.getHeight() - frameHeight) * Math.random();
+        teleport(-1, -1);
+    }
+
+    public void teleport(int x) {
+        teleport(x, -1);
     }
 
     public List<Rect> getFrames() {
@@ -124,6 +134,14 @@ public class Sprite {
 
     public void setCanvas(Canvas canvas) {
         this.canvas = canvas;
+    }
+
+    public int getFrameWidth() {
+        return frameWidth;
+    }
+
+    public int getFrameHeight() {
+        return frameHeight;
     }
 
     public Rect getBoundingBoxRect() {
