@@ -36,6 +36,7 @@ public class SamsungView extends View {
         Rect dst = new Rect(w - b.getWidth(), h - b.getHeight(), w, h);
         canvas.drawBitmap(b, src, dst, paint);
 
+
         paint.setColor(Color.BLACK);
         paint.setTextSize(100);
         canvas.save();
