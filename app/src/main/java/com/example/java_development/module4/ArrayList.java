@@ -12,9 +12,7 @@ public class ArrayList {
         array = new Double[n];
     }
 
-    public ArrayList() {
-        this(10);
-    }
+    public ArrayList() { this(10); }
 
     public void add(Double value) {
         if (size >= array.length) {
