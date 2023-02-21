@@ -1,6 +1,7 @@
 package com.example.java_development.module4;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class LinkedMain {
     public static void main(String[] args) {
@@ -14,6 +15,15 @@ public class LinkedMain {
         for (String s :
                 list) {
             System.out.println(s);
+        }
+
+        MyLinkedList<String> list1 = new MyLinkedList<>();
+        list1.add("123");
+        list1.add("456");
+        list1.add("789");
+        ListIterator<String> li = list1.listIterator();
+        while (li.hasNext()) {
+            li.next();
         }
     }
 }

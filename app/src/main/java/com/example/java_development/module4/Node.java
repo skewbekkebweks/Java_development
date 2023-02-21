@@ -3,6 +3,7 @@ package com.example.java_development.module4;
 public class Node<T> {
     private T value;
     private Node<T> next;
+    private Node<T> prev;
 
     public T getValue() {
         return value;
@@ -19,6 +20,10 @@ public class Node<T> {
     public void setNext(Node<T> next) {
         this.next = next;
     }
+
+    public Node<T> getPrev() { return prev; }
+
+    public void setPrev(Node<T> prev) { this.prev = prev; }
 
     @Override
     public String toString() {
