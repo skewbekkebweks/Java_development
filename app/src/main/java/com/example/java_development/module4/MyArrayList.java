@@ -4,15 +4,15 @@ import androidx.annotation.NonNull;
 
 import java.util.Arrays;
 
-public class ArrayList {
+public class MyArrayList<T> {
     private Double[] array;
     private int size = 0;
 
-    public ArrayList(int n) {
+    public MyArrayList(int n) {
         array = new Double[n];
     }
 
-    public ArrayList() { this(10); }
+    public MyArrayList() { this(10); }
 
     public void add(Double value) {
         if (size >= array.length) {
@@ -57,7 +57,7 @@ public class ArrayList {
     }
 
     public static void main(String[] args) {
-        ArrayList arrayList = new ArrayList();
+        MyArrayList<Integer> arrayList = new MyArrayList<Integer>();
         arrayList.add(23.0);
         arrayList.add(24.0);
         arrayList.add(25.5);
