@@ -11,6 +11,10 @@ import android.view.View;
 
 import com.example.java_development.R;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 public class SamsungView extends View {
     Paint paint = new Paint();
 
