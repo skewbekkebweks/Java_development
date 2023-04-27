@@ -36,26 +36,22 @@ public class MyMonthAdapter extends ArrayAdapter<MyMonth> {
         month.setText(item.getMonth());
         temp.setText(item.getTemp() + "");
         days.setText(item.getDays() + "");
-        if (item.isLike()) {
-            convertView.setBackgroundColor(Color.MAGENTA);
-        } else {
-            convertView.setBackgroundColor(Color.WHITE);
-        }
-        like.setOnCheckedChangeListener(null);
-        like.setChecked(item.isLike());
-
-        View finalConvertView = convertView;
-        like.setOnCheckedChangeListener((compoundButton, b) -> {
-            item.setLike(b);
-            System.out.println(getItem(position));
-            System.out.println(b);
-            System.out.println(item.isLike());
-            if (b) {
-                finalConvertView.setBackgroundColor(Color.MAGENTA);
-            } else {
-                finalConvertView.setBackgroundColor(Color.WHITE);
-            }
-        });
+        if (position % 2 == 0) month.setBackgroundColor(Color.MAGENTA);
+//        like.setOnCheckedChangeListener(null);
+//        like.setChecked(item.isLike());
+//
+//        View finalConvertView = convertView;
+//        like.setOnCheckedChangeListener((compoundButton, b) -> {
+//            item.setLike(b);
+//            System.out.println(getItem(position));
+//            System.out.println(b);
+//            System.out.println(item.isLike());
+//            if (b) {
+//                finalConvertView.setBackgroundColor(Color.MAGENTA);
+//            } else {
+//                finalConvertView.setBackgroundColor(Color.WHITE);
+//            }
+//        });
         return convertView;
     }
 }
