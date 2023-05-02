@@ -5,16 +5,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.java_development.R;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 import okhttp3.Call;
@@ -32,6 +37,9 @@ public class NetworkActivity extends AppCompatActivity {
     TextView textView;
     EditText email;
     EditText password;
+    ListView usersLV;
+    ArrayList<User> users = new ArrayList<>();
+    ArrayAdapter a;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +50,7 @@ public class NetworkActivity extends AppCompatActivity {
         textView = new TextView(getBaseContext());
         email = new EditText(getBaseContext());
         password = new EditText(getBaseContext());
+        usersLV = new ListView(getBaseContext());
 
         button.setText("Отправить запрос");
         textView.setHint("Тут ответ с сервера");
@@ -51,6 +60,9 @@ public class NetworkActivity extends AppCompatActivity {
         layout.addView(password);
         layout.addView(textView);
         layout.addView(button);
+        layout.addView(usersLV);
+        a = new ArrayAdapter<>(getBaseContext(), android.R.layout.simple_list_item_1, users);
+        usersLV.setAdapter(a);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +80,7 @@ public class NetworkActivity extends AppCompatActivity {
                 .add("pwd", password.getText().toString())
                 .build();
         Request request = new Request.Builder()
-                .url("http:192.168.1.85:8080")
+                .url("http:192.168.1.85:8080/user")
                 .post(body)
                 .build();
 
@@ -84,7 +96,11 @@ public class NetworkActivity extends AppCompatActivity {
                 String body = response.body().string();
                 if (code < 300) {
                     runOnUiThread(() -> {
+                        Gson gson = new Gson();
+                        User[] user = gson.fromJson(body, User[].class);
                         textView.setText(body);
+                        users.clear();
+                        users.addAll(Arrays.asList(user));
                     });
                 } else {
                     runOnUiThread(() -> {
